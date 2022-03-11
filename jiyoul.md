@@ -39,3 +39,70 @@ DIP : 의존관계 역전 원칙(Dependency Inversion Principle)
 * 배보다 배꼽이 더 클때도 있음.
 * 기능을 확장할 가능성이 없으면 구체 클래스를 바로 하고 나중에 인터페이스로 리팩토링해도 됌.
 - 모든 역할과 구현을 분리하자.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+※ 2일차 ※
+
+간단한 개발요청에 따른 개발
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+※ 3일차 ※
+
+Ctrl + Shift + T : 테스트파일을 쉽게 만들수 있음.
+
+IOC(Inversion of Control) : 제어의 역전
+프로그램의 제어 흐름을 직접 제어하는 것이 아니라 외부에서 제어하는 것을 제어의 역전이라고 한다.
+
+DI(Dependency Injection) : 의존관계 주입
+실행 시점(런타임)에 외부에서 실제 구현 객체를 생성하고 클라이언트에 전달해서 클라이언트와 서버의 실제 의존관계가
+연결되는 것을 DI라고 한다.
+
+IOC컨테이너 or DI 컨테이너
+객체를 생성하고 관리하면서 의존관계를 연결해주는것.
+
+프레임워크 vs 라이브러리의 차이
+내가 작성한 코드를 대신 제어하고 실행하면 프레임워크이고,
+내가 작성한 코드를 내가 직접 제어의 흐름을 담당한다면 라이브러리이다.
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+※ 4일차 ※
+
+스프링 컨테이너에 빈 객체 등록하는법.
+
+-> 먼저 AppConfig.class에 구성 정보를 담는다.(@Bean)
+-> DI가 필요한 구현 위치에 new AnnotationConfigApplicationContext(AppConfig.class)를 하여 스프링 컨테이너를 생성해준다.
+(이때 AppConfig.class를 구성 정보로 지정했다.)
+-> 그러면 스프링 컨테이너를 파라미터로 넘어온 설정 클래스 정보를(AppConfig.class의 @Bean 들) 사용하여 스프링 빈을 등록한다.
+* 항상 빈 이름은 다르게 부여해야 하고 @Bean(name="test")처럼 변경 가능하며 빈만 사용시 메서드 명으로 생성된다.
+
+iter : 자동으로 리스트 또는 배열을 for문(:) 만들어줌.
+itar : 자동으로 리스트 도는 배열을 for문(i++)으로 만들어줌
+Ctrl + Alt + V : 값이 담긴 값을 선언하고 사용하면 자동으로 저장 할 타입, 변수명을 앞에 만들어줌.
+
+AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+ac.getBeanDefinitionNames(); // 모든 빈 이름을 가져온다.
+ac.getBean(beanDefinitionName); // 빈 이름으로 빈 객체를 조회한다.
+
+BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName); // 빈 이름으로 메타 데이터 정보 받아오기.
+* @Bean 하나당 각각 하나씩 메타정보가 생성된다.
+
+BeanDefinition.ROLE_APPLICATION // 일반적으로 사용자가 정의한 빈
+BeanDefinition.ROLE_INFRASTRUCTURE // 스프링이 내부에서 사용하는 빈
+
+@Test시 일부로 설계한 예외를 터트리는지 확인하는 방법도 있다.
+-> Assertions.assertThrows(NoSuchBeanDefinitionException.class, () -> ac.getBean("ABC", MemberService.class));
+
+자바 객체는 모든게 Object 타입이므로 Object.class로 조회하면 모든 @Bean이 나온다.
+
+★ BeanFactory
+스프링 컨테이너의 최상위 인터페이스이다.
+스프링 빈을 관리하고 조회한다.
+getBean을 제공한다.
+★ ApplicationContext
+Beanfactory의 모든 기능을 상속받아서 제공한다. (빈 관리기능 + 편리한 부가기능 제공)
+그래서 BeanFactory를 직접 사용하지 않고 부가기능이 추가된 ApplicationContext를 사용한다.
+BeanFactory와 ApplicationContext 둘다 스프링 컨테이너라고 한다.
+ 
+
+

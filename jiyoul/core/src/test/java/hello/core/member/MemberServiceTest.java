@@ -27,4 +27,5 @@ public class MemberServiceTest {
         //then
         Assertions.assertThat(member).isEqualTo(findMember);
     }
+
 }

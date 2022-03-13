@@ -40,4 +40,5 @@ public class ConfigurationSingletonTest {
         System.out.println("bean = " + bean.getClass());
         //bean = class hello.core.AppConfig$$EnhancerBySpringCGLIB$$13481f13
     }
+
 }

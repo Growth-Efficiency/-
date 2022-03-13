@@ -15,4 +15,5 @@ public class FixDiscountPolicy implements DiscountPolicy {
             return 0;
         }
     }
+
 }

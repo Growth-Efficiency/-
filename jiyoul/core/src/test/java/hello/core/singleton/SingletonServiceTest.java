@@ -13,4 +13,5 @@ public class SingletonServiceTest {
     public static void main(String[] args) {
         System.out.println("싱글톤 실행");
     }
+
 }

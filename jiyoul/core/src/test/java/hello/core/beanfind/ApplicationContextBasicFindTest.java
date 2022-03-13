@@ -41,4 +41,5 @@ public class ApplicationContextBasicFindTest {
     void findBeanByNameX() {
         Assertions.assertThrows(NoSuchBeanDefinitionException.class, () -> ac.getBean("ABC", MemberService.class));
     }
+
 }

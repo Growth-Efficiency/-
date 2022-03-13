@@ -36,4 +36,5 @@ class RateDiscountPolicyTest {
         //then
         assertThat(discount).isEqualTo(0);
     }
+
 }

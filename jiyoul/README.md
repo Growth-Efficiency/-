@@ -152,3 +152,30 @@ excludeFilters : 컴포넌트 스캔에서 제외할 대상을 지정한다.
 
 
 애노테이션을 지원 하는건 자바 언어가 아니라 스프링이 지원하는 기능이다.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+※ 7일차 ※
+
+생성자가 하나만 있으면 @Autowired가 생략되어도 들어간다!
+
+일반적으로 의존 관계 주입은 생성자 주입, 수정자(setter) 주입만 사용한다.
+
+왠만하면 생성자 주입으로 하는것이 좋다.
+-> final로 생성하여 비어있는 값이 들어갈 일도 없고 테스트 용도로도 용이하다.
+
+롬복 추가시에 꼭 build.gradle에도 추가하고. 플러그인도 lombok 받아주고.
+Settings -> Build, Execution, Deployment -> compiler -> Annotation Processors에서
+Enable annotation processiong 을 체크해주어야 한다.
+
+롬복의 기능
+@Getter @Setter : get, set을 자동으로 만들어준다
+@ToString : 해당 클래스를 출력시 String 형태로 보기 쉽게 출력해준다.
+@RequiredArgsConstructor : 비어있지 않는 객체(final)의 생성자를 자동으로 생성해주고 의존 주입해준다.(단일 생성자라서)
+
+@Autowired때 조회된 빈이 2개 이상 일때. (DiscountPolicy의 FixDiscountPolicy , RateDiscountPolicy)
+-> 타입 매칭시 2개 이상이면 필드명(파라미터 이름)과 동일한것으로 주입시킨다.
+-> @Qualifier("xxx")로 하면 @Qualifier("xxx")로 빈에 똑같이 등록한것을 찾고, 없으면 xxx라는 빈을 찾아 넣어준다.
+-> @Primary를 넣으면 우선순위가 최상위가 되어 이것을 바로 의존에 넣어준다.
+=> @Qualifier와 @Primary가 동시에 있으면 @Qualifie가 우선순위를 가진다.(더 상세하기 때문)

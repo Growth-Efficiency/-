@@ -24,11 +24,13 @@ public class AppConfig {
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 
-	private MemberRepository memberRepository() {
+	@Bean
+	public MemberRepository memberRepository() {
 		return new MemoryMemberRepository();
 	}
 
-	private DiscountPolicy discountPolicy() {
+	@Bean
+	public DiscountPolicy discountPolicy() {
 //		return new FixDiscountPolicy();
 		return new RateDiscountPolicy();
 	}

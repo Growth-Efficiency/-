@@ -8,6 +8,7 @@ import hello.core.order.OrderService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+
 public class OrderApp {
 
 	public static void main(String[] args) {
@@ -21,7 +22,6 @@ public class OrderApp {
 		memberService.join(member);
 
 		Order order = orderService.createOrder(memberId, "itemA", 20000);
-
 		System.out.println("order = " + order);
 	}
 

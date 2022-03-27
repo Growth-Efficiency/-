@@ -196,5 +196,11 @@
 #### BeanFactory / ApplicationContext 정리
 
 - ApplicationContext 는 BeanFactory 의 기능을 상속 받는다.
-- BeanFactory 를 직접 사용할 일은 거의 없다. 부가기능이 포함된 ApplicationContext를 사용한다.
+- BeanFactory 를 직접 사용할 일은 거의 없다. 부가기능이 포함된 ApplicationContext 를 사용한다.
 - BeanFactory 나 ApplicationContext 를 스프링 컨테이너라 한다.
+
+### BeanDefinition - 스프링 빈 설정 메타 정보
+
+- 다양한 설정 형식을 지원할 수 있는 이유는 BeanDefinition 이라는 추상화가 있기 때문이다.
+- 스프링 빈을 등록하는 방법은 직접 등록하는 방법(xml)과 팩토리 빈을 통해서 등록하는 방법이 있다.
+- 일반적으로 자바 코드로 등록하는 방법은 팩토리 빈을 통하는 방법이다.

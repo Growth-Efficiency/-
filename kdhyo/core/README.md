@@ -310,3 +310,20 @@
   이미 등록된 인스턴스를 불러서 주입해준다.
 - @Bean 만 사용할 시 스프링 빈에 등록이 되지만, 싱글톤이 보장되진 않는다.
 - 스프링 설정 정보는 항상 "@Configuration"을 사용하자.
+
+### @ComponentScan
+- excludeFilters : ComponentScan 에서 제외를 세팅
+- basePackages : 스캔 범위 패키지를 설정한다. (디폴트는 @ComponentScan 패키지부터 시작한다.)
+
+#### FilterType 옵션
+
+ANNOTATION: 기본 값, 애노테이션을 인식해서 동작한다.
+  - ex) org.example.SomeAnnotation
+ASSIGNABLE_TYPE: 지정한 타입과 자식 타입을 인식해서 동작한다.
+  - ex) org.example.SomeClass
+ASPECTJ: AspectJ 패턴 사용
+  - ex) org.example..*Service+
+REGEX: 정규 표현식
+  - ex) org\.example\.Default.*
+CUSTOM: TypeFilter 이라는 인터페이스를 구현해서 처리
+  - ex) org.example.MyTypeFilter

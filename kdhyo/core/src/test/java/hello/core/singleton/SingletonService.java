@@ -1,7 +1,5 @@
 package hello.core.singleton;
 
-import java.security.Signature;
-
 public class SingletonService {
 
     private static final SingletonService instance = new SingletonService();

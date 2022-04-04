@@ -485,4 +485,23 @@ CUSTOM: TypeFilter 이라는 인터페이스를 구현해서 처리
 
 ### 싱글톤 내에서 프로토타입 빈을 사용할 경우 문제점
 - 싱글톤 생성 시점에 한 번만 생성되기 때문에 여러 클라이언트에서 호출하여도 같은 프로토타입을 바라본다.
-- 
+
+### DL (Dependency Lookup)
+- 의존성 조회(탐색)을 말한다.
+- 컨테이너에서 원하는 것만 조회해서 사용할 수 있다.
+
+#### ObjectFactory, ObjectProvider
+- 지정한 빈을 컨테이너에서 대신 찾아주는 DL 서비스를 제공하는 것이 바로 `ObjectProvider`
+- `ObjectFactory` 를 확장하여 여러 기능이 추가된 것이 `ObjectProvider`
+- 특징
+  - ObjectFactory: 기능이 단순, 별도의 라이브러리 필요 없음, 스프링에 의존
+  - ObjectProvider: ObjectFactory 상속, 옵션, 스트림 처리 등 편의 기능이 많음, 라이브러리 필요없음, 스프링에 의존
+
+#### JSR-330 Provider
+- `javax.inject.Provider` 라는 자바 표준
+- 라이브러리 별도 추가 필요
+- 특징
+  - `get()` 메서드 하나로 기능이 매우 단순하다.
+  - 별도 라이브러리 추가가 필요하다.
+  - 자바 표준이므로 스프링이 아닌 다른 컨테이너에서도 사용할 수 있다.
+  - 단위테스트를 만들거나 mock 코드를 만들기 쉬워진다.

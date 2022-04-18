@@ -177,6 +177,8 @@ Enable annotation processiong 을 체크해주어야 한다.
 @Autowired때 조회된 빈이 2개 이상 일때. (DiscountPolicy의 FixDiscountPolicy , RateDiscountPolicy)
 -> 타입 매칭시 2개 이상이면 필드명(파라미터 이름)과 동일한것으로 주입시킨다.
 -> @Qualifier("xxx")로 하면 @Qualifier("xxx")로 빈에 똑같이 등록한것을 찾고, 없으면 xxx라는 빈을 찾아 넣어준다.
+-> @Autowired()는 타입기준으로 의존성 주입.
+-> @Resource(name="") 는 빈 name기준으로 의존성 주입
 -> @Primary를 넣으면 우선순위가 최상위가 되어 이것을 바로 의존에 넣어준다.
 => @Qualifier와 @Primary가 동시에 있으면 @Qualifie가 우선순위를 가진다.(더 상세하기 때문)
 
